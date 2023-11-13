@@ -57,53 +57,39 @@ int main()
 	SYS_Init();
 	SYS_TimerInit();
 	HMOTOR_voidInit();
-
-	////////////////////////////////// Pins for signaling
-	///
-	///
-	/*
-	SYS_InitPinAsOutput(MGPIO_PORTA , MGPIO_PIN1);
-	SYS_InitPinAsOutput(MGPIO_PORTA , MGPIO_PIN2);
-	SYS_InitPinAsOutput(MGPIO_PORTA , MGPIO_PIN3);
-	SYS_InitPinAsOutput(MGPIO_PORTA , MGPIO_PIN4);
-	*/
-
-    //UARTvoidInit();
+	
 	SYS_USARTInit();
 	HULTRASONIC_voidInit();
-    data = 0;
-
-    ///
-    ///
-    SYS_InitPinAsOutput(MGPIO_PORTA, MGPIO_PIN8);
-
-    while (1)
-    {
-        //data2 = MUSART_u8ReceiveByteAsynch_(dataptr);
-    	data=MUART_u8ReceiveByteSynchNonBlocking();
-    	UARTvoidTransmit(data);
-    	SYS_HandleUARTInput(data);
-
-    	if( 30 == Global_u8CruiseControlMode )
-    	{
-    		ACC_AdaptiveSpeedControl();
-    	}
-
-    	if(20 == Global_u8CruiseControlMode)
-    	{
-    		f32 dist = HULTRASONIC_f32GetDistance();
-    		if(dist < 8.00)
-    		{
-    			MGPIO_voidSetPinValue(MGPIO_PORTA, MGPIO_PIN8, MGPIO_HIGH);
-    			ACC_voidStopCar();
-    		}
-    		else
-    		{
-
-    		}
-    	}
-
-
+	data = 0;
+	
+	SYS_InitPinAsOutput(MGPIO_PORTA, MGPIO_PIN8);
+	
+	while (1)
+	{
+	data=MUART_u8ReceiveByteSynchNonBlocking();
+	UARTvoidTransmit(data);
+	SYS_HandleUARTInput(data);
+	
+	if( 30 == Global_u8CruiseControlMode )
+	{
+		ACC_AdaptiveSpeedControl();
+	}
+	
+	if(20 == Global_u8CruiseControlMode)
+	{
+		f32 dist = HULTRASONIC_f32GetDistance();
+		if(dist < 8.00)
+		{
+			MGPIO_voidSetPinValue(MGPIO_PORTA, MGPIO_PIN8, MGPIO_HIGH);
+			ACC_voidStopCar();
+		}
+		else
+		{
+	
+		}
+	}
+	
+	
 
     }
 
