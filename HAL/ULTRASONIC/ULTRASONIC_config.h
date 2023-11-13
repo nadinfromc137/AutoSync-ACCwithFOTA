@@ -1,0 +1,17 @@
+/*
+  * ULTRASONIC_config.h
+ *
+ *  Created on: Nov 1, 2023
+ *      Author: Compu Tech
+ */
+
+#ifndef HAL_ULTRASONIC_ULTRASONIC_CONFIG_H_
+#define HAL_ULTRASONIC_ULTRASONIC_CONFIG_H_
+
+#define TRIG_PORT MGPIO_PORTB
+#define ECHO_PORT MGPIO_PORTB
+
+#define TRIG_PIN MGPIO_PIN13
+#define ECHO_PIN MGPIO_PIN14
+
+#endif /* HAL_ULTRASONIC_ULTRASONIC_CONFIG_H_ */
