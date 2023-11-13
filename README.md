@@ -7,7 +7,13 @@ If the Cruise Control is off, the car is at a constant speed.
 In Normal Cruise Control mode, the driver gets to choose a speed to stay on. Using the FOTA feature we update the car system to add the Collision Avoidance feature with the Normal Cruise Control.
 As for the Adaptive Cruise Control, the car uses an ultrasonic sensor that constantly measures the distance between it and the car ahead. According to this distance, the car speed is controlled (by changing the PWM of the STM timer) so it avoids colliding with the car ahead.
 
+The following image shows a brief of the software architecture and drivers used in the STM application side
+
+![image](https://github.com/nadinfromc137/AutoSync-ACCwithFOTA/assets/44551861/83337290-e532-4a3b-b7fd-96ab6ed13bbc)
+
+
 For the FOTA feature, we created a simple website where we can upload our .hex file which is the firmware we want to update.
+
 ![image](https://github.com/nadinfromc137/AutoSync-ACCwithFOTA/assets/44551861/2ba8d7a9-1dc1-47da-8c2f-0bdfcca8a001)
 
 After the user clicks upload, the hex file is uploaded to a server, which is detected by the Raspberry Pi microcontroller and fetched to be uploaded.
